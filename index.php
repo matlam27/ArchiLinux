@@ -17,6 +17,6 @@ try {
         echo $rep['id']."<br>";
     }
 } catch (PDOException $e) {
-    echo "Connexion é : " . $e->getMessage();
+    echo "Connexion échouée : " . $e->getMessage();
 }
 ?>
