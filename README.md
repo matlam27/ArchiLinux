@@ -1,1 +1,1 @@
-# ArchiLiux
+# ArchiLinux
