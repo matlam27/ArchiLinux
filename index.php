@@ -1,19 +1,22 @@
 <?php
-
-$servername= "192.168.64.8";
-$username= "root";
+$servername = "localhost"; 
+$username = "root";
 $password = "root";
+$dbname = "archilinux";
 
 try {
-$bdd = new PDO("mysql:host=$servername;dbname=archilinux", $username, $password);
-$bdd -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-echo "connexion réussie";
+    $bdd = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
+    $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "Connexion réussie";
+
+
+    $sql = "SELECT * FROM personnes";
+    $req = $bdd->query($sql);
+
+    while ($rep = $req->fetch()) {
+        echo $rep['id']."<br>";
+    }
+} catch (PDOException $e) {
+    echo "Connexion échouée : " . $e->getMessage();
 }
-catch (PDOException $e) {
-echo "connexion échouée: " . $e->getMessage();
-}
-$sql = "SELECT * FROM personnes";
-$req = $bdd->query($sql);
-while ($rep = $req->fetch()) {
-echo $rep['id']."<br>";
-}
+?>
